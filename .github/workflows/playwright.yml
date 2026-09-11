@@ -1,41 +1,29 @@
-name: Playwright UI Tests
-
+name: Playwright Tests
 on:
   push:
-    branches: [ "main" ]
+    branches: [ main, master ]
   pull_request:
-    branches: [ "main" ]
-  workflow_dispatch: # Allows you to trigger the test run manually from GitHub
-
+    branches: [ main, master ]
 jobs:
   test:
-    timeout-minutes: 20
+    timeout-minutes: 60
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-
+    - uses: actions/checkout@v6
     - name: Set up Python
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v6
       with:
-        python-version: '3.11' # Update this if you use a different version
-
+        python-version: '3.13'
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-
-    - name: Install Playwright Browsers & OS Dependencies
-      run: playwright install --with-deps
-
-    - name: Run Pytest and Generate Allure Results
-      run: pytest --alluredir=allure-results --clean-alluredir
-
-    - name: Upload Allure Results as Artifact
-      if: always() # Ensures the report uploads even if tests fail
-      uses: actions/upload-artifact@v4
+    - name: Ensure browsers are installed
+      run: python -m playwright install --with-deps
+    - name: Run your tests
+      run: pytest --tracing=retain-on-failure
+    - uses: actions/upload-artifact@v4
+      if: ${{ !cancelled() }}
       with:
-        name: allure-results
-        path: allure-results/
-        retention-days: 7
+        name: playwright-traces
+        path: test-results/
