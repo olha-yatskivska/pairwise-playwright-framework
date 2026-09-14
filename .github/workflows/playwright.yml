@@ -45,7 +45,7 @@ jobs:
           retention-days: 20
 
     - name: Generate Allure Report
-      uses: simple-elf/allure-report-action@v1.10
+      uses: PavanRebel/allure-report-action@v1.1
       if: always()
       id: allure-report
       with:
