@@ -34,7 +34,7 @@ jobs:
       env:
          USE_LOCAL: ${{ inputs.use_local || 'false' }}
       run: |
-          pytest --browser chromium --alluredir=allure-results
+          pytest --browser chromium --browser firefox --alluredir=allure-results
     
     - name: Upload Allure Results Artifact
       if: always()
