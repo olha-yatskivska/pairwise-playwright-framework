@@ -43,3 +43,19 @@ jobs:
           name: allure-results
           path: allure-results
           retention-days: 20
+
+    - name: Generate Allure Report
+      uses: simple-elf/allure-report-action@v1.10
+      if: always()
+      id: allure-report
+      with:
+          allure_results: allure-results
+          allure_history: allure-history
+    
+    - name: Deploy Allure Report to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v4
+      if: always()
+      with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: allure-history
