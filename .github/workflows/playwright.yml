@@ -44,18 +44,18 @@ jobs:
           path: allure-results
           retention-days: 20
 
-    - name: Generate Allure Report
-      uses: PavanRebel/allure-report-action@v1.1
-      if: always()
-      id: allure-report
-      with:
-          allure_results: allure-results
-          allure_history: allure-history
+ #  - name: Generate Allure Report
+ #    uses: PavanRebel/allure-report-action@v1.1
+ #    if: always()
+ #    id: allure-report
+ #    with:
+         # allure_results: allure-results
+         # allure_history: allure-history
     
-    - name: Deploy Allure Report to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v4
-      if: always()
-      with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: allure-history
+#    - name: Deploy Allure Report to GitHub Pages
+#      uses: peaceiris/actions-gh-pages@v4
+#      if: always()
+#      with:
+         # github_token: ${{ secrets.GITHUB_TOKEN }}
+         # publish_branch: gh-pages
+         # publish_dir: allure-history
