@@ -11,6 +11,13 @@ conftest.py: Manages Pytest fixtures to handle browser initialization, context s
 pytest.ini & requirements.txt: Manages core execution parameters and project dependencies for easy environment setup.
 
 
+Run via GidHub Action: Action/Playwright Tests / Run workflow/ check check-box for use local / Run workflow: 
+
+* Click on test/Run Playwright Tests to see [logs on test run](https://prnt.sc/wdgl37KZHLpq)
+* Upload Allure Results Artifact can find download artifact URL and open allure report localy (see cammand below).  
+
+Run local: clone repo, install venv, install allure 
+* examples off the allure reports for local test runs can see here [allure-history](./allure-history)
 
 ## VS Code Command Cheat Sheet 
 
