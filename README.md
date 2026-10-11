@@ -1,23 +1,52 @@
-This project utilizes Python, Playwright, and Pytest to execute automated UI tests. The framework is built using the Page Object Model (POM) design pattern and implements Data-Driven Testing (DDT) to maximize test coverage while maintaining clean, scalable code.
-
-data/: Stores external test data sets. The pairwise_data.csv file allows the test suite to iterate through mathematically optimized input combinations without hardcoding values into the scripts.
-
-pages/: Houses the Page Object classes (base_page.py, pantry_page.py). This centralizes UI locators and page interactions, ensuring that if the application's UI changes, maintenance is restricted to a single file.
-
-tests/: Contains the Pytest execution scripts. The test files ingest the CSV data and assert the expected outcomes using the page methods.
-
-conftest.py: Manages Pytest fixtures to handle browser initialization, context setup, and teardown seamlessly before and after test runs.
-
-pytest.ini & requirements.txt: Manages core execution parameters and project dependencies for easy environment setup.
+# Automated UI Testing Framework
 
 
-Run via GidHub Action: Action/Playwright Tests / Run workflow/ check check-box for use local / Run workflow: 
+A robust, scalable UI test automation framework built using **Python, Playwright, and Pytest**. Designed following industry best practices, it implements the Page Object Model (POM) design pattern and Data-Driven Testing (DDT) to maximize test coverage while minimizing code duplication and maintenance overhead.
 
-* Click on test/Run Playwright Tests to see [logs on test run](https://prnt.sc/wdgl37KZHLpq)
-* Upload Allure Results Artifact can find download artifact URL and open allure report localy (see cammand below).  
+---
 
-Run local: clone repo, install venv, install allure 
-* examples off the allure reports for local test runs can see here [allure-history](./allure-history)
+## Architecture & Design Patterns
+
+* **Page Object Model (POM)**: Separates test logic from UI element locators. If the application interface changes, updates are localized to a single page class.
+
+* **Data-Driven Testing (DDT):** Externalizes test datasets into CSV files, allowing the suite to iterate through mathematically optimized input combinations dynamically without hardcoding values.
+
+* **Robust Fixture Management:** Centralizes browser initialization, context setup, and teardown cleanly using Pytest fixtures.
+
+---
+
+## Project Structure
+
+* `data/:` Stores external test datasets (e.g., pairwise_data.csv) for optimized input testing.
+
+* `pages/:` Houses Page Object classes (base_page.py, pantry_page.py) to centralize locators and interactions.
+
+* `tests/:` Contains execution scripts that ingest CSV data and perform assertions using page methods.
+
+* `conftest.py:` Manages Pytest hooks and fixtures for seamless session management.
+
+* `pytest.ini & requirements.txt:` Define core execution parameters and project dependencies.
+
+---
+
+## Execution & CI/CD
+
+#### Run via GitHub Actions
+
+1. Navigate to Actions -> Playwright Tests -> Run workflow.
+
+2. Check the box for use local if applicable, then click Run workflow.
+
+3. View [test execution logs](https://prnt.sc/wdgl37KZHLpq) directly on GitHub or download the Allure Results Artifact to generate and view local reports.
+
+
+#### Run Locally
+
+Clone the repository, set up your virtual environment, and install dependencies:
+
+Example local Allure history and outputs can be inspected in the [./allure-history](./allure-history) directory.
+
+---
 
 ## VS Code Command Cheat Sheet 
 
